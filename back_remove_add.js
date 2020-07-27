@@ -1,4 +1,4 @@
-
+//SLL assignments in one file to utilize the class structure for all of the required methods.
 
 
 
@@ -45,7 +45,7 @@ class SLL {
         var runner = this.head; //runner starts as the current head of the SLL
 
         while(runner) { //while loop runs until it hits null because the VERY last value of our LL will always be NULL.
-            console.log(runner.value)
+            //console.log(runner.value)
 
             if(runner.value == value) {
                 return true //this means that the LL has our value in it, if it returns truc, we're leaving the while loop and ending the function
@@ -111,6 +111,7 @@ class SLL {
         return sum/this.length()
         }
     
+//SList: Back
 // Create a function that accepts a ListNode pointer and returns the last value in the list.
 
     back(){
@@ -121,19 +122,40 @@ class SLL {
 
             }
             runner = runner.next;
-    
         }
+    }
 
+//SList: Remove Back
+//Create a standalone function that removes the last ListNode in the list and returns the new list.
+
+    removeBack() {
+        var runner = this.head;
+        while(runner.next.next) {
+            runner = runner.next
+        }
+        runner.next = null;
+        return this
+    }
+
+//SList: Add Back
+//Create a function that creates a ListNode with given value and inserts it at end of a linked list.
+    addBack(value) {
+        var runner = this.head;
+        while(runner.next) {
+            runner = runner.next
+        }
+        runner.next = new Node(value);
+        return this
     }
 }
-
 
 newLinkedList = new SLL()
 newLinkedList.addFront(5)
 newLinkedList.addFront(3)
 newLinkedList.addFront(1)
 
-console.log(newLinkedList.back())
+console.log(newLinkedList.addBack(23))
+console.log(newLinkedList)
 // console.log(newLinkedList.front())
 
 
