@@ -60,50 +60,114 @@ class SLL {
 // SList: Second to Last Value
 // Create a standalone function that, given a pointer to the first node in a singly linked list, will return the second-to-last value in that list. What will you return if the list is not long enough?
     second_to_last() {
-        var runner = this.head;
-
-
-        return 
+        var runner = this.head;//runner assigned to first node
+        var counter = 0;
+            while(runner) {
+            console.log(runner)
+                if(runner.next.next == null){
+                    console.log("entered if statement")
+                    return runner.value
+                }
+                counter += 1;
+                runner=runner.next
+            }
+        console.log("List not long enough")
+        return this
     }
+
+    length() {
+        var runner = this.head;//runner assigned to first node
+            var counter = 0; //this is how I'm counting how many nodes there are
+            while(runner) {
+                counter += 1;
+                runner=runner.next
+            }
+            return counter
+    }
+
 
 // SList: Delete Given Node
 // Create ListNode method removeSelf() to disconnect (remove) itself from linked lists that include it. Note: the node might be the first in a list (it won’t be the last), and you do NOT have a pointer to the previous node. Also, don’t lose any subsequent nodes pointed to by .next.
-    removeSelf() {
+    removeSelf(n1) {
         var runner = this.head;
-
-
-        return
+        //case 1: node is at front of list
+        if(runner.value==n1){
+            console.log("node found at front of list")
+            return runner.next
+        }
+        //case 2: node is not at front of list
+        while(runner && runner.value != n1){
+            var prev = runner;
+            runner = runner.next; //after this runner will be at the node we want to remove
+        }
+        if(runner){
+            //unlink runner from our list
+            prev.next = runner.next;
+            console.log("node found and deleted")
+        }
+        return this
 
     }
+
+
+
+    addBack(value) {
+        var runner = this.head;
+        while(runner.next) {
+            runner = runner.next
+        }
+        runner.next = new Node(value);
+        return this
+    }
+}
 
 // SList: Copy
 // Given a pointer to a singly linked list, return a copy of that list. Do not return the same list, but instead make a copy of each node in the list and connect them in the same order as the original.
 
-    copyNodes(pointer) {
-        var runner = this.head;
+function copyNodes(pointer) {
 
-
-        return
-
+    var runner = pointer.head;
+    linkedListPointerCopy = new SLL();
+    console.log(runner)
+    linkedListPointerCopy.addFront(5);
+    while(runner.next) {
+        console.log(runner.value)
+        //add runner.value to the back
+        //linkedListPointerCopy.addBack(runner.value);
+        runner = runner.next;
     }
+    return linkedListPointerCopy
+}
 
 // SList: Filter
 // Given a headNode, a lowVal and a highVal, remove from the list any nodes that have values less than lowVal or higher than highVal. Return the new list.rite a method that accepts a value and create a new node, assign it to the list head, and return a pointer to the new head node.
 
-    filter() {
-        var runner = this.head;
-
-
-        return
-
-    }
+function filter(headNode, lowVal, highVal) {
+    var runner = headNode.head;//runner assigned to the input node
+    console.log(typeof runner)
+        while(runner) {
+            console.log(runner.value)
+            if(runner.value < lowVal || runner.value > highVal) {
+                console.log(runner)
+                headNode.removeSelf(runner.value);
+                runner=headNode.head;
+            }
+            runner=runner.next;
+        }
+        return headNode
 }
 
+    node1 = new Node(1)
 
     newLinkedList = new SLL()
-    newLinkedList.addFront(5)
+    newLinkedList.addFront(5) //.addFront(1).addFront(3).addFront(5) can call this way if methods are linked with return this
     newLinkedList.addFront(3)
     newLinkedList.addFront(1)
+    //newLinkedList2 = copyNodes(newLinkedList)
+        
+    console.log(filter(newLinkedList, 2, 4))
+    //console.log(newLinkedList.removeSelf(1))
+
     
-    console.log(newLinkedList)
-    console.log(newLinkedList.front())
+    // console.log(newLinkedList)
+    // console.log(newLinkedList.front())
