@@ -1,7 +1,7 @@
-To Do 1
-Recursive Sigma
-Write a recursive function that given a number returns the sum of integers from 1 to that number.
-Example: rSigma(5) = 15 (1+2+3+4+5); rSigma(2.5) = 3 (1+2); rSigma(-1) = 0.
+// To Do 1
+// Recursive Sigma
+// Write a recursive function that given a number returns the sum of integers from 1 to that number.
+// Example: rSigma(5) = 15 (1+2+3+4+5); rSigma(2.5) = 3 (1+2); rSigma(-1) = 0.
 
 function rSigma(num){
     num = Math.round(num);
@@ -15,12 +15,12 @@ function rSigma(num){
     return num + rSigma(num-1)
 }
 
-console.log(rSigma(-1))
+console.log(rSigma(5))
 
 
 
-Recursive Factorial
-Given num, return the product of ints from 1 up to num. If less than zero, treat as zero. If not an integer, truncate. Experts tell us 0! is 1. rFact(3) = 6 (1*2*3). Also, rFact(6.5) = 720 (1*2*3*4*5*6).
+// Recursive Factorial
+// Given num, return the product of ints from 1 up to num. If less than zero, treat as zero. If not an integer, truncate. Experts tell us 0! is 1. rFact(3) = 6 (1*2*3). Also, rFact(6.5) = 720 (1*2*3*4*5*6).
 
 function rFact(num) {
     num = Math.floor(num);
@@ -31,13 +31,13 @@ function rFact(num) {
         return num * rFact(num - 1)
     }
 }
-console.log(rFact(0))
+console.log(rFact(3))
 
 
-Recursive Binary Search
-Given a sorted array and a value, recursively determine whether value is found within array. 
-rBinarySearch([1,3,5,6],4) = false; 
-rBinarySearch([4,5,6,8,12],5) = true.
+// Recursive Binary Search
+// Given a sorted array and a value, recursively determine whether value is found within array. 
+// rBinarySearch([1,3,5,6],4) = false; 
+// rBinarySearch([4,5,6,8,12],5) = true.
 
 function rBinarySearch(arr, value) {
     var mid = Math.floor(arr.length/2);//we'll get the middle value in the array
